@@ -1,0 +1,510 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: #f8f9fa;
+  min-height: 100vh;
+  color: #2c3e50;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+/* Header styles */
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header h1 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Collections grid */
+.collections-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+  justify-items: center;
+}
+
+/* Collection card */
+.collection-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  will-change: transform;
+  max-width: 400px;
+  width: 100%;
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.collection-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.collection-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.collection-card:hover .collection-image {
+  transform: scale(1.02);
+}
+
+.collection-info {
+  padding: 1.5rem;
+  /* Ensure text doesn't inherit transitions */
+  transition: none;
+}
+
+.collection-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  /* Prevent text from inheriting transitions */
+  transition: none;
+  transform: none;
+}
+
+.collection-description {
+  color: #7f8c8d;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  font-weight: 300;
+  /* Prevent text from inheriting transitions */
+  transition: none;
+  transform: none;
+}
+
+/* Back button - Not sticky */
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #2c3e50;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  will-change: transform;
+}
+
+.back-button:hover {
+  background: #f8f9fa;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Collection detail */
+.collection-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 6rem;
+}
+
+.collection-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #2c3e50;
+}
+
+.collection-header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.collection-header p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Swiper styles - No background box */
+.swiper-container {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 60vh;
+}
+
+.painting-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.painting-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Control bar below painting */
+.control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+/* Navigation and fullscreen buttons */
+.nav-button,
+.fullscreen-button {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+}
+
+.nav-button:hover,
+.fullscreen-button:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-button::after {
+  font-size: 24px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+/* Painting info panel - Below the swiper */
+.painting-info {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.painting-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.painting-artist {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.painting-description {
+  font-size: 1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Swiper Pagination - Custom styling */
+.swiper-pagination {
+  position: relative;
+  bottom: 0;
+  margin-top: 1rem;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(44, 62, 80, 0.3);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2c3e50;
+  transform: scale(1.3);
+}
+
+/* Fullscreen modal */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.close-fullscreen {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  will-change: transform;
+}
+
+.close-fullscreen:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .collection-card {
+    max-width: 350px;
+  }
+  
+  .collection-detail {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+  
+  .collection-header h1 {
+    font-size: 2rem;
+  }
+  
+  .swiper-slide {
+    padding: 1rem;
+    min-height: 50vh;
+  }
+  
+  .painting-image {
+    max-height: 50vh;
+  }
+  
+  .painting-info {
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile Control Bar */
+  .control-bar {
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+  }
+
+  .nav-button,
+  .fullscreen-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-button::after {
+    font-size: 18px;
+  }
+
+  /* Mobile Pagination */
+  .swiper-pagination {
+    margin-top: 0.5rem;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .collection-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .collection-card {
+    max-width: 300px;
+  }
+  
+  .swiper-slide {
+    padding: 0.5rem;
+    min-height: 40vh;
+  }
+  
+  .painting-image {
+    max-height: 40vh;
+  }
+  
+  .painting-title {
+    font-size: 1.4rem;
+  }
+  
+  .painting-artist {
+    font-size: 1rem;
+  }
+  
+  .painting-description {
+    font-size: 0.9rem;
+  }
+
+  /* Small mobile Control Bar */
+  .nav-button,
+  .fullscreen-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .nav-button::after {
+    font-size: 16px;
+  }
+
+  /* Small mobile Pagination */
+  .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    margin: 0 3px;
+  }
+}
+
+/* Loading animation */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

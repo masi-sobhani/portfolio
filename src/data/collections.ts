@@ -1,0 +1,102 @@
+import { Collection } from '../types';
+
+export const collections: Collection[] = [
+  {
+    id: '1',
+    name: 'No Name',
+    description: 'A 19th-century art movement characterized by relatively small, thin, yet visible brush strokes, open composition, emphasis on accurate depiction of light in its changing qualities.',
+    coverImageUrl: `${process.env.PUBLIC_URL}/paintings/1.jpg`,
+    paintings: [
+      {
+        id: '1',
+        title: 'Starry Night',
+        artist: 'Masi',
+        year: 2025,
+        description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/1.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '2',
+        title: 'Water Lilies',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of approximately 250 oil paintings by French Impressionist Claude Monet.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/2.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '3',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/3.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '4',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/4.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '5',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/5.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '6',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/6.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '7',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/7.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: 'sunflowers',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/8.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '10',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/9.jpg`,
+        collectionId: 'impressionism'
+      },
+      {
+        id: '11',
+        title: 'Sunflowers',
+        artist: 'Masi',
+        year: 2025,
+        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/10.jpg`,
+        collectionId: 'impressionism'
+      },
+    ]
+  },
+]; 
