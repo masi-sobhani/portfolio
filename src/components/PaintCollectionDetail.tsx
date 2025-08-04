@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -49,11 +49,15 @@ const CollectionDetail: React.FC = () => {
     }
   };
 
-  const handleImageLoad = (paintingId: string, imageElement: HTMLImageElement) => {
+  const calculateImageDimensions = useCallback((imageElement: HTMLImageElement) => {
     const maxWidth = window.innerWidth * 0.8;
     const maxHeight = window.innerHeight * 0.6;
     
-    const dimensions = calculateOptimalDimensionsFromLoadedImage(imageElement, maxWidth, maxHeight);
+    return calculateOptimalDimensionsFromLoadedImage(imageElement, maxWidth, maxHeight);
+  }, []);
+
+  const handleImageLoad = (paintingId: string, imageElement: HTMLImageElement) => {
+    const dimensions = calculateImageDimensions(imageElement);
     
     setImageDimensions(prev => ({
       ...prev,
@@ -63,6 +67,32 @@ const CollectionDetail: React.FC = () => {
       }
     }));
   };
+
+  const handleResize = useCallback(() => {
+    // Recalculate dimensions for all loaded images when viewport changes
+    Object.keys(imageRefs.current).forEach(paintingId => {
+      const imageElement = imageRefs.current[paintingId];
+      if (imageElement && imageElement.complete) {
+        const dimensions = calculateImageDimensions(imageElement);
+        setImageDimensions(prev => ({
+          ...prev,
+          [paintingId]: {
+            width: dimensions.width,
+            height: dimensions.height
+          }
+        }));
+      }
+    });
+  }, [calculateImageDimensions]);
+
+  // Debounced resize handler to prevent excessive recalculations
+  const debouncedResizeHandler = useMemo(() => {
+    let timeoutId: NodeJS.Timeout;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleResize, 150);
+    };
+  }, [handleResize]);
 
   const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape' && isFullscreen) {
@@ -74,6 +104,11 @@ const CollectionDetail: React.FC = () => {
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
   }, [handleKeyPress]);
+
+  useEffect(() => {
+    window.addEventListener('resize', debouncedResizeHandler);
+    return () => window.removeEventListener('resize', debouncedResizeHandler);
+  }, [debouncedResizeHandler]);
 
   if (loading) {
     return (
