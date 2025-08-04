@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { ArrowLeft, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { collections } from '../data/collections';
+import { collections } from '../data/paintingCollections';
 import { calculateOptimalDimensionsFromLoadedImage } from '../utils/imageUtils';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -28,10 +28,6 @@ const CollectionDetail: React.FC = () => {
       setLoading(false);
     }
   }, [collection]);
-
-  const handleBackClick = () => {
-    navigate('/');
-  };
 
   const handleFullscreenToggle = () => {
     setIsFullscreen(!isFullscreen);
@@ -68,20 +64,20 @@ const CollectionDetail: React.FC = () => {
     }));
   };
 
-  const handleKeyPress = (e: KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape' && isFullscreen) {
       setIsFullscreen(false);
     }
-  };
+  }, [isFullscreen]);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [isFullscreen]);
+  }, [handleKeyPress]);
 
   if (loading) {
     return (
-      <div className="loading">
+      <div className="loading" style={{ paddingTop: '80px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -95,7 +91,7 @@ const CollectionDetail: React.FC = () => {
 
   if (!collection) {
     return (
-      <div className="loading">
+      <div className="loading" style={{ paddingTop: '80px' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -110,20 +106,7 @@ const CollectionDetail: React.FC = () => {
   const currentPainting = collection.paintings[currentPaintingIndex];
 
   return (
-    <>
-      <motion.button
-        className="back-button"
-        onClick={handleBackClick}
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <ArrowLeft size={16} />
-        Back to Collections
-      </motion.button>
-
+    <div style={{ paddingTop: '80px' }}>
       <div className="collection-detail">
         <motion.div
           className="collection-header"
@@ -241,7 +224,7 @@ const CollectionDetail: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

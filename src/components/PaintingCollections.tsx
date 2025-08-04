@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
-import { collections } from '../data/collections';
+import { collections } from '../data/paintingCollections';
 
 const Collections: React.FC = () => {
   const navigate = useNavigate();
@@ -33,14 +33,17 @@ const Collections: React.FC = () => {
   };
 
   return (
-    <div className="collections-container">
+    <div className="collections-container" style={{ paddingTop: '80px' }}>
       <motion.header 
         className="header"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <h1>Masi Gallery</h1>
+        <h1>Paintings Collections</h1>
+        <p className='text-gray-500 text-sm mt-2 text-center'>
+          Click on a collection to view the paintings in that collection
+        </p>
       </motion.header>
 
       <motion.div 
