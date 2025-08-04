@@ -1,181 +1,166 @@
-# Masi Gallery - Artistic Image Gallery
+# Masi Gallery
 
-A beautiful, responsive React TypeScript gallery application featuring high-quality image display with optimal aspect ratio calculations and smooth animations.
+A modern, responsive photography and painting gallery built with React, TypeScript, and Tailwind CSS.
 
-## Features
-
-### 🎨 Artistic Design
-- Beautiful gradient backgrounds with glassmorphism effects
-- Smooth animations using Framer Motion
-- Responsive design for both desktop and mobile
-- Artistic typography and modern UI elements
-
-### 🖼️ Image Gallery
-- **Swiper Integration**: Smooth image carousel with navigation
-- **Aspect Ratio Calculation**: Automatic image resizing based on original dimensions
-- **High-Quality Display**: Optimized for best image quality
-- **Fullscreen Mode**: Immersive viewing experience
-- **Keyboard Navigation**: Support for arrow keys and ESC
+## 🌟 Features
 
 ### 📱 Responsive Design
-- Mobile-first approach
-- Adaptive layouts for different screen sizes
-- Touch-friendly interactions
-- Optimized performance across devices
+- **Mobile-First**: Optimized for all screen sizes
+- **Touch-Friendly**: Perfect for mobile and tablet devices
+- **Cross-Browser**: Works on all modern browsers
 
-### 🚀 Performance Features
-- Lazy loading for images
-- Optimized image dimensions
-- Smooth transitions and animations
-- Efficient state management
+### 🎨 Gallery Features
+- **Painting Collections**: Browse curated painting collections
+- **Photo Gallery**: Responsive photo grid with fullscreen view
+- **Smooth Animations**: Framer Motion powered transitions
+- **Lazy Loading**: Optimized performance with lazy loading
 
-## Getting Started
+### 🚀 Performance Optimizations
+- **Code Splitting**: Lazy-loaded components
+- **Image Optimization**: Progressive image loading
+- **Memory Efficient**: Optimized for smooth performance
+- **SEO Friendly**: Proper meta tags and structure
 
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm or yarn
+## 🛠️ Technologies Used
 
-### Installation
+- **React 19**: Latest React with hooks
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **Framer Motion**: Smooth animations
+- **React Router**: Client-side routing
+- **Swiper**: Touch slider for paintings
+- **Lucide React**: Beautiful icons
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd masi-gallery
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/masi-sobhani/portfolio.git
+   cd masi-gallery
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm start
+   ```
+
+4. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
+
+## 🚀 Deployment
+
+### GitHub Pages (Recommended)
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Enable GitHub Pages**
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Select "Deploy from a branch"
+   - Choose "gh-pages" branch
+   - Save the settings
+
+3. **Deploy automatically**
+   ```bash
+   npm run deploy
+   ```
+
+### Manual Deployment
+
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy to GitHub Pages**
+   ```bash
+   npm run deploy
+   ```
+
+## 📁 Project Structure
+
+```
+masi-gallery/
+├── public/                 # Static assets
+│   ├── paintings/         # Painting images
+│   └── photos/           # Photography images
+├── src/
+│   ├── components/       # React components
+│   │   ├── Navigation.tsx
+│   │   ├── PhotoGallery.tsx
+│   │   ├── PaintCollectionDetail.tsx
+│   │   ├── About.tsx
+│   │   ├── Resume.tsx
+│   │   └── LoadingSpinner.tsx
+│   ├── data/            # Data files
+│   │   ├── paintingCollections.ts
+│   │   └── photographyCollections.ts
+│   ├── utils/           # Utility functions
+│   └── types/           # TypeScript types
+├── .github/workflows/   # GitHub Actions
+└── docs/               # Documentation
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## 🎯 Available Scripts
 
-3. Start the development server:
-```bash
-npm start
-```
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm run test` - Run tests
+- `npm run deploy` - Deploy to GitHub Pages
 
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🌐 Live Demo
 
-## Project Structure
+Visit the live application: [Masi Gallery](https://masi-sobhani.github.io/portfolio)
 
-```
-src/
-├── components/
-│   ├── Collections.tsx      # Main collections grid
-│   └── CollectionDetail.tsx # Individual collection view
-├── data/
-│   └── sampleData.ts        # Sample gallery data
-├── types/
-│   └── index.ts            # TypeScript interfaces
-├── utils/
-│   └── imageUtils.ts       # Image calculation utilities
-├── App.tsx                 # Main app component
-├── App.css                 # Main styles
-└── index.tsx              # App entry point
-```
+## 📱 Pages
 
-## Key Technologies
+- **Home** (`/`) - Painting collections
+- **Photos** (`/photos`) - Photography gallery
+- **About** (`/about`) - Personal information
+- **Resume** (`/resume`) - Professional experience
 
-- **React 18** with TypeScript
-- **React Router** for navigation
-- **Swiper** for image carousel
-- **Framer Motion** for animations
-- **Lucide React** for icons
-- **CSS3** with modern features (backdrop-filter, gradients)
+## 🔧 Configuration
 
-## Features in Detail
+### Environment Variables
+- `PUBLIC_URL` - Base URL for assets (auto-configured for GitHub Pages)
 
-### Collections View
-- Grid layout of art collections
-- Hover animations and smooth transitions
-- Responsive design with auto-fit grid
-- Beautiful card design with glassmorphism
+### Build Configuration
+- Optimized for production
+- Minified and compressed
+- Service worker ready
+- PWA compatible
 
-### Collection Detail View
-- Swiper carousel for paintings
-- Fullscreen mode with ESC key support
-- Back navigation button
-- Painting information overlay
-- Keyboard navigation support
+## 🤝 Contributing
 
-### Image Optimization
-- Automatic aspect ratio calculation
-- Responsive image sizing
-- High-quality image display
-- Lazy loading for performance
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-### Responsive Design
-- Mobile-first approach
-- Adaptive layouts
-- Touch-friendly interactions
-- Optimized for all screen sizes
-
-## Customization
-
-### Adding New Collections
-Edit `src/data/sampleData.ts` to add new collections:
-
-```typescript
-{
-  id: 'your-collection-id',
-  name: 'Collection Name',
-  description: 'Collection description',
-  coverImageUrl: 'path/to/cover-image.jpg',
-  originalWidth: 800,
-  originalHeight: 600,
-  paintings: [
-    // Add paintings here
-  ]
-}
-```
-
-### Styling
-- Main styles are in `src/App.css`
-- Global styles in `src/index.css`
-- Uses CSS custom properties for easy theming
-
-## Performance Optimizations
-
-- Lazy loading for images
-- Optimized image dimensions
-- Efficient state management
-- Smooth animations with hardware acceleration
-- Responsive image loading
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Development
-
-### Available Scripts
-
-- `npm start` - Runs the app in development mode
-- `npm test` - Launches the test runner
-- `npm run build` - Builds the app for production
-- `npm run eject` - Ejects from Create React App
-
-### Code Style
-
-- TypeScript for type safety
-- Functional components with hooks
-- Consistent naming conventions
-- Clean and maintainable code structure
-
-## License
+## 📄 License
 
 This project is licensed under the MIT License.
 
-## Contributing
+## 🙏 Acknowledgments
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+- **React Team** - For the amazing framework
+- **Tailwind CSS** - For the utility-first CSS
+- **Framer Motion** - For smooth animations
+- **Lucide** - For beautiful icons
 
 ---
 
-Built with ❤️ for artists and art lovers
+**Built with ❤️ using React, TypeScript, and Tailwind CSS**
