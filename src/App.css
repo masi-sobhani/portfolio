@@ -206,7 +206,6 @@ body {
   max-height: 60vh;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Control bar below painting */
@@ -307,6 +306,30 @@ body {
 .swiper-pagination-bullet-active {
   background: #2c3e50;
   transform: scale(1.3);
+}
+
+/* Custom Pagination - Outside and Below Slider */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #1a1a1a;
+  transform: scale(1.2);
 }
 
 /* Fullscreen modal */
@@ -425,6 +448,18 @@ body {
     height: 8px;
     margin: 0 4px;
   }
+
+  /* Mobile Custom Pagination */
+  .custom-pagination {
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .custom-pagination .swiper-pagination-bullet {
+    width: 5px;
+    height: 5px;
+    margin: 0 3px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -477,6 +512,13 @@ body {
     width: 6px;
     height: 6px;
     margin: 0 3px;
+  }
+
+  /* Small mobile Custom Pagination */
+  .custom-pagination .swiper-pagination-bullet {
+    width: 4px;
+    height: 4px;
+    margin: 0 2px;
   }
 }
 

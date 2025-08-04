@@ -129,7 +129,11 @@ const CollectionDetail: React.FC = () => {
             spaceBetween={0}
             slidesPerView={1}
             navigation={false}
-            pagination={{ clickable: true }}
+            pagination={{ 
+              clickable: true,
+              el: '.custom-pagination',
+              type: 'bullets'
+            }}
             keyboard={{ enabled: true }}
             onSlideChange={handleSlideChange}
             onSwiper={setSwiperInstance}
@@ -165,6 +169,9 @@ const CollectionDetail: React.FC = () => {
               );
             })}
           </Swiper>
+          
+          {/* Custom Pagination - Outside and Below Slider */}
+          <div className="custom-pagination"></div>
         </motion.div>
 
         <motion.div

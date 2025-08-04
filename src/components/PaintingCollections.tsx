@@ -33,49 +33,55 @@ const Collections: React.FC = () => {
   };
 
   return (
-    <div className="collections-container" style={{ paddingTop: '80px' }}>
-      <motion.header 
-        className="header"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1>Paintings Collections</h1>
-        <p className='text-gray-500 text-sm mt-2 text-center'>
-          Click on a collection to view the paintings in that collection
-        </p>
-      </motion.header>
+    <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+            Paintings Collections
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Explore my curated collections of paintings and artworks
+          </p>
+        </motion.div>
 
-      <motion.div 
-        className="collections-grid"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {collections.map((collection, index) => (
-          <motion.div
-            key={collection.id}
-            className="collection-card"
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => handleCollectionClick(collection.id)}
-          >
-            <div className="collection-image-container">
-              <img
-                src={collection.coverImageUrl}
-                alt={collection.name}
-                className="collection-image"
-                loading="lazy"
-              />
-            </div>
-            <div className="collection-info">
-              <h2 className="collection-title">{collection.name}</h2>
-              <p className="collection-description">{collection.description}</p>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+        {/* Collections Grid */}
+        <motion.div 
+          className="collections-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {collections.map((collection, index) => (
+            <motion.div
+              key={collection.id}
+              className="collection-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => handleCollectionClick(collection.id)}
+            >
+              <div className="collection-image-container">
+                <img
+                  src={collection.coverImageUrl}
+                  alt={collection.name}
+                  className="collection-image"
+                  loading="lazy"
+                />
+              </div>
+              <div className="collection-info">
+                <h2 className="collection-title">{collection.name}</h2>
+                <p className="collection-description">{collection.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };
