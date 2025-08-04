@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
-import { ArrowLeft, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { collections } from '../data/paintingCollections';
 import { calculateOptimalDimensionsFromLoadedImage } from '../utils/imageUtils';
 import 'swiper/css';
@@ -13,7 +13,6 @@ import 'swiper/css/pagination';
 
 const CollectionDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [currentPaintingIndex, setCurrentPaintingIndex] = useState(0);
   const [loading, setLoading] = useState(true);
