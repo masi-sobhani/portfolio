@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 import { collections } from '../data/paintingCollections';
+import LazyImage from './LazyImage';
 
 const Collections: React.FC = () => {
   const navigate = useNavigate();
@@ -67,11 +68,10 @@ const Collections: React.FC = () => {
               onClick={() => handleCollectionClick(collection.id)}
             >
               <div className="collection-image-container">
-                <img
+                <LazyImage
                   src={collection.coverImageUrl}
                   alt={collection.name}
                   className="collection-image"
-                  loading="lazy"
                 />
               </div>
               <div className="collection-info">

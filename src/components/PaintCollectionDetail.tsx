@@ -7,6 +7,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { collections } from '../data/paintingCollections';
 import { calculateOptimalDimensionsFromLoadedImage } from '../utils/imageUtils';
+import LazyImage from './LazyImage';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -181,10 +182,7 @@ const CollectionDetail: React.FC = () => {
               return (
                 <SwiperSlide key={painting.id}>
                   <div className="painting-container">
-                    <img
-                      ref={(el) => {
-                        imageRefs.current[painting.id] = el;
-                      }}
+                    <LazyImage
                       src={painting.imageUrl}
                       alt={painting.title}
                       className="painting-image"
@@ -192,7 +190,6 @@ const CollectionDetail: React.FC = () => {
                         width: dimensions ? `${dimensions.width}px` : 'auto',
                         height: dimensions ? `${dimensions.height}px` : 'auto'
                       }}
-                      loading="lazy"
                       onLoad={(e) => {
                         const img = e.target as HTMLImageElement;
                         handleImageLoad(painting.id, img);

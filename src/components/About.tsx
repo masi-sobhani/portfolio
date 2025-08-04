@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import LazyImage from './LazyImage';
 
 const About: React.FC = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const About: React.FC = () => {
             <div className="bg-gray-200 rounded-lg aspect-square mb-6">
               {/* Placeholder for profile image */}
               <div className="w-full h-full flex items-center justify-center text-gray-500">
-                <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Profile" className="w-full h-full object-cover rounded-lg" />
+                <LazyImage src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Profile" className="w-full h-full object-cover rounded-lg" />
               </div>
             </div>
           </motion.div>
