@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="text-xl font-bold text-gray-900"
             >
-              Masi Gallery
+              Masi Portfolio
             </motion.div>
           </Link>
 
