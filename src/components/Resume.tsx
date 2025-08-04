@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { Download, Mail, Phone, MapPin } from 'lucide-react';
 
 const Resume: React.FC = () => {
   const skills = [
