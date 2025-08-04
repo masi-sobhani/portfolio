@@ -14,7 +14,7 @@ const Resume = lazy(() => import('./components/Resume'));
 
 const App: React.FC = () => {
   return (
-    <Router basename="/portfolio">
+    <Router>
       <motion.div 
         className="app"
         initial={{ opacity: 0 }}
