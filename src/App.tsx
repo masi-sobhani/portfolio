@@ -24,10 +24,10 @@ const App: React.FC = () => {
         <Navigation />
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path="/" element={<Collections />} />
+            <Route path="/" element={<About />} />
+            <Route path="/collections" element={<Collections />} />
             <Route path="/collection/:id" element={<CollectionDetail />} />
             <Route path="/photos" element={<PhotoGallery />} />
-            <Route path="/about" element={<About />} />
             <Route path="/resume" element={<Resume />} />
           </Routes>
         </Suspense>

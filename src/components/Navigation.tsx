@@ -8,9 +8,9 @@ const Navigation: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/', label: 'Paintings' },
+    { path: '/', label: 'About Me' },
+    { path: '/paintings', label: 'Paintings' },
     { path: '/photos', label: 'Photos' },
-    { path: '/about', label: 'About Me' },
     { path: '/resume', label: 'Resume' },
   ];
 
@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="text-xl font-bold text-gray-900"
             >
-              Masi Portfolio
+              Masoomeh Sobhani
             </motion.div>
           </Link>
 
