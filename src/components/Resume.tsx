@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, Mail, Phone, MapPin } from 'lucide-react';
+import { Download, Mail, Phone, MapPin, Instagram, Twitter } from 'lucide-react';
 
 const Resume: React.FC = () => {
   const skills = [
@@ -78,6 +78,14 @@ const Resume: React.FC = () => {
                 <div className="flex items-center space-x-3">
                   <Phone size={20} className="text-gray-600" />
                   <a className="text-blue-500" href='tel:+989027923058'>+989027923058</a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Instagram size={20} className="text-gray-600" />
+                  <a className="text-blue-500" target='_blank' href='https://www.instagram.com/masi_sobhanii'>Instagram</a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Twitter size={20} className="text-gray-600" />
+                  <a className="text-blue-500" target='_blank' href='https://x.com/masiisobhanii'>X (Twitter)</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={20} className="text-gray-600" />
