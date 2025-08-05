@@ -7,6 +7,208 @@ on:
     branches: [ main ]
 
 jobs:
+  optimize-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup FFmpeg
+      uses: FedericoCarboni/setup-ffmpeg@v4
+      
+    - name: Create optimized directory
+      run: |
+        mkdir -p public/images/optimized
+        mkdir -p public/paintings/optimized
+        mkdir -p public/photos/optimized
+        
+    - name: Optimize images in public/images
+      run: |
+        echo "Optimizing images in public/images..."
+        find public/images -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read -r file; do
+          # Get relative path from public/images
+          rel_path="${file#public/images/}"
+          dir_path=$(dirname "$rel_path")
+          filename=$(basename "$file")
+          name_without_ext="${filename%.*}"
+          
+          # Create output directory structure
+          mkdir -p "public/images/optimized/$dir_path"
+          
+          # Determine output format based on input
+          ext="${filename##*.}"
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            output_format="webp"
+          else
+            output_format="webp"
+          fi
+          
+          output_file="public/images/optimized/$dir_path/${name_without_ext}.$output_format"
+          
+          echo "Processing: $file -> $output_file"
+          
+          # Optimize with FFmpeg
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          else
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          fi
+          
+          # Get file sizes for comparison
+          original_size=$(stat -c%s "$file")
+          optimized_size=$(stat -c%s "$output_file")
+          reduction=$(( (original_size - optimized_size) * 100 / original_size ))
+          
+          echo "✅ Optimized: $file -> $output_file"
+          echo "   Original: ${original_size} bytes, Optimized: ${optimized_size} bytes"
+          echo "   Reduction: ${reduction}%"
+        done
+        
+    - name: Optimize images in public/paintings
+      run: |
+        echo "Optimizing images in public/paintings..."
+        find public/paintings -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read -r file; do
+          # Get relative path from public/paintings
+          rel_path="${file#public/paintings/}"
+          dir_path=$(dirname "$rel_path")
+          filename=$(basename "$file")
+          name_without_ext="${filename%.*}"
+          
+          # Create output directory structure
+          mkdir -p "public/paintings/optimized/$dir_path"
+          
+          # Determine output format based on input
+          ext="${filename##*.}"
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            output_format="webp"
+          else
+            output_format="webp"
+          fi
+          
+          output_file="public/paintings/optimized/$dir_path/${name_without_ext}.$output_format"
+          
+          echo "Processing: $file -> $output_file"
+          
+          # Optimize with FFmpeg
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          else
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          fi
+          
+          # Get file sizes for comparison
+          original_size=$(stat -c%s "$file")
+          optimized_size=$(stat -c%s "$output_file")
+          reduction=$(( (original_size - optimized_size) * 100 / original_size ))
+          
+          echo "✅ Optimized: $file -> $output_file"
+          echo "   Original: ${original_size} bytes, Optimized: ${optimized_size} bytes"
+          echo "   Reduction: ${reduction}%"
+        done
+        
+    - name: Optimize images in public/photos
+      run: |
+        echo "Optimizing images in public/photos..."
+        find public/photos -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read -r file; do
+          # Get relative path from public/photos
+          rel_path="${file#public/photos/}"
+          dir_path=$(dirname "$rel_path")
+          filename=$(basename "$file")
+          name_without_ext="${filename%.*}"
+          
+          # Create output directory structure
+          mkdir -p "public/photos/optimized/$dir_path"
+          
+          # Determine output format based on input
+          ext="${filename##*.}"
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            output_format="webp"
+          else
+            output_format="webp"
+          fi
+          
+          output_file="public/photos/optimized/$dir_path/${name_without_ext}.$output_format"
+          
+          echo "Processing: $file -> $output_file"
+          
+          # Optimize with FFmpeg
+          if [[ "$ext" =~ ^(jpg|jpeg)$ ]]; then
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          else
+            ffmpeg -i "$file" -vf "scale=1600:-1:flags=lanczos" -c:v libwebp -quality 85 -preset photo "$output_file" -y
+          fi
+          
+          # Get file sizes for comparison
+          original_size=$(stat -c%s "$file")
+          optimized_size=$(stat -c%s "$output_file")
+          reduction=$(( (original_size - optimized_size) * 100 / original_size ))
+          
+          echo "✅ Optimized: $file -> $output_file"
+          echo "   Original: ${original_size} bytes, Optimized: ${optimized_size} bytes"
+          echo "   Reduction: ${reduction}%"
+        done
+        
+    - name: Generate optimization report
+      run: |
+        echo "📊 Image Optimization Report" > optimization_report.md
+        echo "==========================" >> optimization_report.md
+        echo "" >> optimization_report.md
+        echo "## Summary" >> optimization_report.md
+        echo "- **Triggered by**: ${{ github.event_name }}" >> optimization_report.md
+        echo "- **Branch**: ${{ github.ref_name }}" >> optimization_report.md
+        echo "- **Commit**: ${{ github.sha }}" >> optimization_report.md
+        echo "" >> optimization_report.md
+        
+        # Count optimized files
+        optimized_count=$(find public -name "*.webp" -path "*/optimized/*" | wc -l)
+        echo "- **Total optimized files**: $optimized_count" >> optimization_report.md
+        echo "" >> optimization_report.md
+        
+        echo "## Optimized Directories" >> optimization_report.md
+        if [ -d "public/images/optimized" ]; then
+          echo "- public/images/optimized/" >> optimization_report.md
+        fi
+        if [ -d "public/paintings/optimized" ]; then
+          echo "- public/paintings/optimized/" >> optimization_report.md
+        fi
+        if [ -d "public/photos/optimized" ]; then
+          echo "- public/photos/optimized/" >> optimization_report.md
+        fi
+        echo "" >> optimization_report.md
+        
+        echo "## File Size Comparison" >> optimization_report.md
+        echo "| Directory | Original Size | Optimized Size | Reduction |" >> optimization_report.md
+        echo "|-----------|---------------|----------------|-----------|" >> optimization_report.md
+        
+        # Calculate total sizes
+        for dir in images paintings photos; do
+          if [ -d "public/$dir" ] && [ -d "public/$dir/optimized" ]; then
+            original_size=$(find "public/$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec stat -c%s {} + | awk '{sum+=$1} END {print sum}')
+            optimized_size=$(find "public/$dir/optimized" -type f -name "*.webp" -exec stat -c%s {} + | awk '{sum+=$1} END {print sum}')
+            
+            if [ "$original_size" -gt 0 ] && [ "$optimized_size" -gt 0 ]; then
+              reduction=$(( (original_size - optimized_size) * 100 / original_size ))
+              echo "| $dir | ${original_size} bytes | ${optimized_size} bytes | ${reduction}% |" >> optimization_report.md
+            fi
+          fi
+        done
+        
+        echo "" >> optimization_report.md
+        echo "## Optimization Settings" >> optimization_report.md
+        echo "- **Format**: WebP" >> optimization_report.md
+        echo "- **Quality**: 85%" >> optimization_report.md
+        echo "- **Max Width**: 1600px" >> optimization_report.md
+        echo "- **Resize Method**: Lanczos" >> optimization_report.md
+        echo "- **Preset**: Photo" >> optimization_report.md
+        
+        cat optimization_report.md
+        
+    - name: Upload optimization report
+      uses: actions/upload-artifact@v4
+      with:
+        name: optimization-report
+        path: optimization_report.md 
   build-and-deploy:
     runs-on: ubuntu-latest
     
@@ -32,4 +234,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
-        publish_branch: gh-pages 
+        publish_branch: gh-pages
+  
