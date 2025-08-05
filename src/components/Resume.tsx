@@ -81,11 +81,11 @@ const Resume: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Instagram size={20} className="text-gray-600" />
-                  <a className="text-blue-500" target='_blank' href='https://www.instagram.com/masi_sobhanii'>Instagram</a>
+                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/masi_sobhanii'>Instagram</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Twitter size={20} className="text-gray-600" />
-                  <a className="text-blue-500" target='_blank' href='https://x.com/masiisobhanii'>X (Twitter)</a>
+                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://x.com/masiisobhanii'>X (Twitter)</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={20} className="text-gray-600" />
