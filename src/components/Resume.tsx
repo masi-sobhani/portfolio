@@ -73,7 +73,7 @@ const Resume: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail size={20} className="text-gray-600" />
-                  <a href="mailto:masi.sobhani.art@gmail.com" className="text-blue-500">masi.art.studio@gmail.com</a>
+                  <a href="mailto:masi.sobhani.art@gmail.com" className="text-blue-500">masi.sobhani.art@gmail.com</a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone size={20} className="text-gray-600" />
