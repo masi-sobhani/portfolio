@@ -5,7 +5,7 @@ export const collections: Collection[] = [
     id: '1',
     name: 'No Name',
     description: 'A 19th-century art movement characterized by relatively small, thin, yet visible brush strokes, open composition, emphasis on accurate depiction of light in its changing qualities.',
-    coverImageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/collection_cover.jpg`,
+    coverImageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/collection_cover.webp`,
     paintings: [
       {
         id: '1',
@@ -13,7 +13,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/1.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/1.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -22,7 +22,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of approximately 250 oil paintings by French Impressionist Claude Monet.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/2.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/2.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -31,7 +31,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/3.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/3.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -40,7 +40,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/4.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/4.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -49,7 +49,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/5.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/5.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -58,7 +58,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/6.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/6.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -67,7 +67,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/7.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/7.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -76,7 +76,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/8.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/8.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -85,7 +85,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/9.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/9.webp`,
         collectionId: 'impressionism'
       },
       {
@@ -94,7 +94,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/no_name/10.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/10.webp`,
         collectionId: 'impressionism'
       },
     ]
@@ -103,7 +103,7 @@ export const collections: Collection[] = [
     id: '2',
     name: 'Abstract',
     description: 'Abstract paintings are characterized by their lack of representational content, focusing instead on the use of color, shape, and form to create a visual experience.',
-    coverImageUrl: `${process.env.PUBLIC_URL}/paintings/abstract/collection_cover.jpg`,
+    coverImageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/collection_cover.webp`,
     paintings: [
       {
         id: '1',
@@ -111,7 +111,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/abstract/1.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/1.webp`,
         collectionId: '1'
       },
       {
@@ -120,7 +120,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/abstract/2.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/2.webp`,
         collectionId: '1'
       },
       {
@@ -129,7 +129,7 @@ export const collections: Collection[] = [
         artist: 'Masi',
         year: 2025,
         description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
-        imageUrl: `${process.env.PUBLIC_URL}/paintings/abstract/3.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/3.webp`,
         collectionId: '1'
       },
     ]
