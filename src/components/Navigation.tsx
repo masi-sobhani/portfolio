@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X , Flower} from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,7 +32,14 @@ const Navigation: React.FC = () => {
           {/* Logo/Brand */}
           <Link to="/" className="flex items-center space-x-2">
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              className="relative"
+            >
+              <Flower size={20} />
+            </motion.div>
+            
+            <motion.div
               className="text-xl font-bold text-gray-900"
             >
               Masoomeh Sobhani
