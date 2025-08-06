@@ -158,3 +158,7 @@ npx lighthouse http://localhost:3000
 ---
 
 *Last updated: August 2024* 
+
+```bash
+ffmpeg -i input.jpg -c:v libwebp -quality 80 -preset default output.webp
+```
