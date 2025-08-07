@@ -3,6 +3,8 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
 import LoadingSpinner from './components/LoadingSpinner';
+import { LanguageProvider } from './contexts/LanguageContext';
+import './i18n';
 import './App.css';
 
 // Lazy load components for better performance
@@ -14,6 +16,7 @@ const Resume = lazy(() => import('./components/Resume'));
 
 const App: React.FC = () => {
   return (
+    <LanguageProvider>
     <Router>
       <motion.div 
         className="app"
@@ -33,6 +36,7 @@ const App: React.FC = () => {
         </Suspense>
       </motion.div>
     </Router>
+    </LanguageProvider>
   );
 };
 

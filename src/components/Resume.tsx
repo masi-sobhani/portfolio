@@ -1,43 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Phone, MapPin, Instagram, Twitter } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useRTL } from '../hooks/useRTL';
 
 const Resume: React.FC = () => {
+  const { t } = useTranslation();
+  const { rtlSpace } = useRTL();
+
   const skills = [
-    'Painting', 'Drawing', 'Digital Painting',
-    'Oil Painting', 'Acrylic Painting', 'Watercolor Painting',
-    'Pastel Painting', 'Gouache Painting', 'Mixed Media',
-    'Photography', 'Digital Photography',
-    'Engraving',
+    t('resume.skillsList.painting'), t('resume.skillsList.drawing'), t('resume.skillsList.digitalPainting'),
+    t('resume.skillsList.oilPainting'), t('resume.skillsList.acrylicPainting'), t('resume.skillsList.watercolorPainting'),
+    t('resume.skillsList.pastelPainting'), t('resume.skillsList.gouachePainting'), t('resume.skillsList.mixedMedia'),
+    t('resume.skillsList.photography'), t('resume.skillsList.digitalPhotography'),
+    t('resume.skillsList.engraving'),
   ];
 
   const experiences = [
     {
-      title: 'Painter',
-      company: 'Self-Employed',
+      title: t('resume.painter'),
+      company: t('resume.selfEmployed'),
       period: '2015 - 2025',
-      description: 'Painting and drawing and sending paintings to galleries and selling them.'
+      description: t('resume.painterDescription')
     },
     {
-      title: 'Painting Instructor',
-      company: 'Self-Employed',
+      title: t('resume.paintingInstructor'),
+      company: t('resume.selfEmployed'),
       period: '2024 - 2025',
-      description: 'Taught painting fundamentals to beginners and intermediate students. Conducted workshops on composition and lighting.'
+      description: t('resume.instructorDescription')
     },
   ];
 
   const education = [
     {
-      degree: 'Bachelor of Painting',
-      school: 'Soore University',
+      degree: t('resume.bachelorOfPainting'),
+      school: t('resume.sooreUniversity'),
       year: '2020-2024',
-      description: 'Focused on painting techniques, art history, and visual storytelling.'
+      description: t('resume.bachelorDescription')
     },
     {
-      degree: 'Painting',
-      school: 'Alghadir High School',
+      degree: t('resume.paintingDegree'),
+      school: t('resume.alghadirHighSchool'),
       year: '2017-2020',
-      description: 'Intensive program covering advanced painting techniques, art history, and visual storytelling.'
+      description: t('resume.highSchoolDescription')
     }
   ];
 
@@ -53,10 +58,10 @@ const Resume: React.FC = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Resume
+            {t('resume.title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Professional Painter with over 5 years of experience in painting and drawing.
+            {t('resume.description')}
           </p>
         </motion.div>
 
@@ -69,34 +74,34 @@ const Resume: React.FC = () => {
         >
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contact Information</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('resume.contactInformation')}</h2>
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
+                <div className={`flex items-center ${rtlSpace.x('3')}`}>
                   <Mail size={20} className="text-gray-600" />
                   <a href="mailto:masi.sobhani.art@gmail.com" className="text-blue-500">masi.sobhani.art@gmail.com</a>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className={`flex items-center ${rtlSpace.x('3')}`}>
                   <Phone size={20} className="text-gray-600" />
                   <a className="text-blue-500" href='tel:+989027923058'>+989027923058</a>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className={`flex items-center ${rtlSpace.x('3')}`}>
                   <Instagram size={20} className="text-gray-600" />
-                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/masi_sobhanii'>Instagram</a>
+                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/masi_sobhanii'>{t('common.instagram')}</a>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className={`flex items-center ${rtlSpace.x('3')}`}>
                   <Twitter size={20} className="text-gray-600" />
-                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://x.com/masiisobhanii'>X (Twitter)</a>
+                  <a className="text-blue-500" target='_blank' rel='noopener noreferrer' href='https://x.com/masiisobhanii'>{t('common.twitter')}</a>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className={`flex items-center ${rtlSpace.x('3')}`}>
                   <MapPin size={20} className="text-gray-600" />
-                  <span className="text-gray-700">Tehran, Iran</span>
+                  <span className="text-gray-700">{t('common.tehranIran')}</span>
                 </div>
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <button className="flex items-center space-x-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200">
+              <button className={`flex items-center ${rtlSpace.x('2')} px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200`}>
                 <Download size={20} />
-                <span>Download PDF</span>
+                <span>{t('resume.downloadPDF')}</span>
               </button>
             </div>
           </div>
@@ -109,7 +114,7 @@ const Resume: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Skills</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('resume.skills')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {skills.map((skill, index) => (
               <motion.div
@@ -132,7 +137,7 @@ const Resume: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Professional Experience</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{t('resume.professionalExperience')}</h2>
           <div className="space-y-6">
             {experiences.map((exp, index) => (
               <motion.div
@@ -160,7 +165,7 @@ const Resume: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Education</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">{t('resume.education')}</h2>
           <div className="space-y-6">
             {education.map((edu, index) => (
               <motion.div

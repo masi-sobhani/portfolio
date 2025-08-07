@@ -1,8 +1,8 @@
 export interface PhotographyImage {
     id: string;
-    title: string;
+    titleKey: string;
     imageUrl: string;
-    description?: string;
+    descriptionKey?: string;
     date?: string;
 }
 
@@ -10,72 +10,72 @@ export interface PhotographyImage {
 export const photographyCollections: PhotographyImage[] = [
     {
         id: '1',
-        title: 'Photography 1',
+        titleKey: 'photos.photo1',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/1.webp`,
-        description: 'A beautiful moment captured in time',
+        descriptionKey: 'photos.photo1Description',
         date: '2024'
     },
     {
         id: '2',
-        title: 'Photography 2',
+        titleKey: 'photos.photo2',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/2.webp`,
-        description: 'Exploring light and shadow',
+        descriptionKey: 'photos.photo2Description',
         date: '2024'
     },
     {
         id: '3',
-        title: 'Photography 3',
+        titleKey: 'photos.photo3',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/3.webp`,
-        description: 'Natural beauty in focus',
+        descriptionKey: 'photos.photo3Description',
         date: '2024'
     },
     {
         id: '4',
-        title: 'Photography 4',
+        titleKey: 'photos.photo4',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/4.webp`,
-        description: 'Urban landscape perspective',
+        descriptionKey: 'photos.photo4Description',
         date: '2024'
     },
     {
         id: '5',
-        title: 'Photography 5',
+        titleKey: 'photos.photo5',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/5.webp`,
-        description: 'Abstract composition',
+        descriptionKey: 'photos.photo5Description',
         date: '2024'
     },
     {
         id: '6',
-        title: 'Photography 6',
+        titleKey: 'photos.photo6',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/6.webp`,
-        description: 'Minimalist approach',
+        descriptionKey: 'photos.photo6Description',
         date: '2024'
     },
     {
         id: '7',
-        title: 'Photography 7',
+        titleKey: 'photos.photo7',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/7.webp`,
-        description: 'Dynamic movement',
+        descriptionKey: 'photos.photo7Description',
         date: '2024'
     },
     {
         id: '8',
-        title: 'Photography 8',
+        titleKey: 'photos.photo8',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/8.webp`,
-        description: 'Emotional depth',
+        descriptionKey: 'photos.photo8Description',
         date: '2024'
     },
     {
         id: '9',
-        title: 'Photography 9',
+        titleKey: 'photos.photo9',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/9.webp`,
-        description: 'Color harmony',
+        descriptionKey: 'photos.photo9Description',
         date: '2024'
     },
     {
         id: '10',
-        title: 'Photography 10',
+        titleKey: 'photos.photo10',
         imageUrl: `${process.env.PUBLIC_URL}/photos/optimized/10.webp`,
-        description: 'Final composition',
+        descriptionKey: 'photos.photo10Description',
         date: '2024'
     }
 ];

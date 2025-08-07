@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { collections } from '../data/paintingCollections';
 import LazyImage from './LazyImage';
 
 const Collections: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleCollectionClick = (collectionId: string) => {
     navigate(`/collection/${collectionId}`);
@@ -44,10 +46,10 @@ const Collections: React.FC = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Paintings Collections
+            {t('collections.title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore my curated collections of paintings and artworks
+            {t('collections.description')}
           </p>
         </motion.div>
 
@@ -70,13 +72,13 @@ const Collections: React.FC = () => {
               <div className="collection-image-container">
                 <LazyImage
                   src={collection.coverImageUrl}
-                  alt={collection.name}
+                  alt={t(collection.nameKey)}
                   className="collection-image"
                 />
               </div>
               <div className="collection-info">
-                <h2 className="collection-title">{collection.name}</h2>
-                <p className="collection-description">{collection.description}</p>
+                <h2 className="collection-title">{t(collection.nameKey)}</h2>
+                <p className="collection-description">{t(collection.descriptionKey)}</p>
               </div>
             </motion.div>
           ))}

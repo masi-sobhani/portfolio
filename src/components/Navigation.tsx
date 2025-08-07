@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X , Flower} from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useRTL } from '../hooks/useRTL';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
+  const { rtlSpace } = useRTL();
 
   const navItems = [
-    { path: '/', label: 'About Me' },
-    { path: '/collections', label: 'Paintings' },
-    { path: '/photos', label: 'Photos' },
-    { path: '/resume', label: 'Resume' },
+    { path: '/', label: t('navigation.aboutMe') },
+    { path: '/collections', label: t('navigation.paintings') },
+    { path: '/photos', label: t('navigation.photos') },
+    { path: '/resume', label: t('navigation.resume') },
   ];
 
   const isActive = (path: string) => {
@@ -42,12 +47,12 @@ const Navigation: React.FC = () => {
             <motion.div
               className="text-xl font-bold text-gray-900"
             >
-              Masoomeh Sobhani
+             {t('navigation.title')}
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className={`hidden md:flex items-center ${rtlSpace.x('8')}`}>
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -69,10 +74,12 @@ const Navigation: React.FC = () => {
                 )}
               </Link>
             ))}
+            <LanguageSwitcher />
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button and language switcher */}
+          <div className={`md:hidden flex items-center ${rtlSpace.x('2')}`}>
+            <LanguageSwitcher />
             <button
               onClick={toggleMobileMenu}
               className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"

@@ -5,6 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useRTL } from '../hooks/useRTL';
 import { collections } from '../data/paintingCollections';
 import { calculateOptimalDimensionsFromLoadedImage } from '../utils/imageUtils';
 import LazyImage from './LazyImage';
@@ -19,7 +22,11 @@ const CollectionDetail: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [imageDimensions, setImageDimensions] = useState<{ [key: string]: { width: number; height: number } | null }>({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const imageRefs = useRef<{ [key: string]: HTMLImageElement | null }>({});
+  const { t } = useTranslation();
+  const { isRTL } = useLanguage();
+  const { rtlValue } = useRTL();
 
   const collection = collections.find(c => c.id === id);
 
@@ -39,13 +46,23 @@ const CollectionDetail: React.FC = () => {
 
   const handlePrevious = () => {
     if (swiperInstance) {
+      // In RTL, "previous" should go to the next slide
+      if (isRTL) {
+        swiperInstance.slideNext();
+      } else {
       swiperInstance.slidePrev();
+      }
     }
   };
 
   const handleNext = () => {
     if (swiperInstance) {
+      // In RTL, "next" should go to the previous slide
+      if (isRTL) {
+        swiperInstance.slidePrev();
+      } else {
       swiperInstance.slideNext();
+      }
     }
   };
 
@@ -110,6 +127,31 @@ const CollectionDetail: React.FC = () => {
     return () => window.removeEventListener('resize', debouncedResizeHandler);
   }, [debouncedResizeHandler]);
 
+  // Reset swiper instance when language/direction changes
+  useEffect(() => {
+    setIsTransitioning(true);
+    
+    if (swiperInstance) {
+      // Small delay to ensure DOM is updated
+      const timer = setTimeout(() => {
+        try {
+          swiperInstance.update();
+          swiperInstance.slideTo(0); // Reset to first slide
+          setIsTransitioning(false);
+        } catch (error) {
+          console.warn('Swiper update failed:', error);
+          // Force re-initialization if update fails
+          setSwiperInstance(null);
+          setIsTransitioning(false);
+        }
+      }, 150);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setIsTransitioning(false);
+    }
+  }, [isRTL, swiperInstance]);
+
   if (loading) {
     return (
       <div className="loading" style={{ paddingTop: '80px' }}>
@@ -118,7 +160,7 @@ const CollectionDetail: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Loading collection...
+          {t('common.loading')}
         </motion.div>
       </div>
     );
@@ -132,7 +174,7 @@ const CollectionDetail: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Collection not found
+          {t('collections.noCollections')}
         </motion.div>
       </div>
     );
@@ -149,17 +191,23 @@ const CollectionDetail: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1>{collection.name}</h1>
-          <p>{collection.description}</p>
+          <h1>{t(collection.nameKey)}</h1>
+          <p>{t(collection.descriptionKey)}</p>
         </motion.div>
 
         <motion.div
           className="swiper-container"
           initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 1, opacity: isTransitioning ? 0.5 : 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          {isTransitioning && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 z-10">
+              <div className="text-gray-600">{t('common.loading')}</div>
+            </div>
+          )}
           <Swiper
+            key={isRTL ? 'rtl' : 'ltr'} // Force re-render when direction changes
             modules={[Navigation, Pagination, Keyboard]}
             spaceBetween={0}
             slidesPerView={1}
@@ -175,6 +223,7 @@ const CollectionDetail: React.FC = () => {
             loop={true}
             effect="fade"
             speed={800}
+            dir={isRTL ? 'rtl' : 'ltr'} // Set direction for Swiper
           >
             {collection.paintings.map((painting, index) => {
               const dimensions = imageDimensions[painting.id];
@@ -184,7 +233,7 @@ const CollectionDetail: React.FC = () => {
                   <div className="painting-container">
                     <LazyImage
                       src={painting.imageUrl}
-                      alt={painting.title}
+                      alt={t(painting.titleKey)}
                       className="painting-image"
                       style={{
                         width: dimensions ? `${dimensions.width}px` : 'auto',
@@ -212,7 +261,7 @@ const CollectionDetail: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <button className="nav-button" onClick={handlePrevious}>
-            <ChevronLeft size={24} />
+            {rtlValue(<ChevronLeft size={24} />, <ChevronRight size={24} />)}
           </button>
           
           <button className="fullscreen-button" onClick={handleFullscreenToggle}>
@@ -220,7 +269,7 @@ const CollectionDetail: React.FC = () => {
           </button>
           
           <button className="nav-button" onClick={handleNext}>
-            <ChevronRight size={24} />
+            {rtlValue(<ChevronRight size={24} />, <ChevronLeft size={24} />)}
           </button>
         </motion.div>
 
@@ -231,9 +280,9 @@ const CollectionDetail: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h3 className="painting-title">{currentPainting.title}</h3>
+                          <h3 className="painting-title">{t(currentPainting.titleKey)}</h3>
           <p className="painting-artist">{currentPainting.artist}, {currentPainting.year}</p>
-          <p className="painting-description">{currentPainting.description}</p>
+          <p className="painting-description">{t(currentPainting.descriptionKey)}</p>
         </motion.div>
       </div>
 
@@ -248,7 +297,7 @@ const CollectionDetail: React.FC = () => {
           >
             <img
               src={currentPainting.imageUrl}
-              alt={currentPainting.title}
+              alt={t(currentPainting.titleKey)}
               className="fullscreen-image"
             />
             <motion.button

@@ -1,17 +1,17 @@
 export interface Painting {
   id: string;
-  title: string;
+  titleKey: string;
   artist: string;
   year: number;
-  description: string;
+  descriptionKey: string;
   imageUrl: string;
   collectionId: string;
 }
 
 export interface Collection {
   id: string;
-  name: string;
-  description: string;
+  nameKey: string;
+  descriptionKey: string;
   coverImageUrl: string;
   paintings: Painting[];
 }

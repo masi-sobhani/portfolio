@@ -3,97 +3,97 @@ import { Collection } from '../types';
 export const collections: Collection[] = [
   {
     id: '1',
-    name: 'No Name',
-    description: 'A 19th-century art movement characterized by relatively small, thin, yet visible brush strokes, open composition, emphasis on accurate depiction of light in its changing qualities.',
+    nameKey: 'collections.noName',
+    descriptionKey: 'collections.noNameDescription',
     coverImageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/collection_cover.webp`,
     paintings: [
       {
         id: '1',
-        title: 'Starry Night',
+        titleKey: 'paintings.starryNight',
         artist: 'Masi',
         year: 2025,
-        description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
+        descriptionKey: 'paintings.starryNightDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/1.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '2',
-        title: 'Water Lilies',
+        titleKey: 'paintings.waterLilies',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of approximately 250 oil paintings by French Impressionist Claude Monet.',
+        descriptionKey: 'paintings.waterLiliesDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/2.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '3',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/3.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '4',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/4.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '5',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/5.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '6',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/6.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '7',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/7.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '8',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/8.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '9',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/9.webp`,
         collectionId: 'impressionism'
       },
       {
         id: '10',
-        title: 'Sunflowers',
+        titleKey: 'paintings.sunflowers',
         artist: 'Masi',
         year: 2025,
-        description: 'A series of still life paintings by the Dutch painter Vincent van Gogh.',
+        descriptionKey: 'paintings.sunflowersDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/no_name/10.webp`,
         collectionId: 'impressionism'
       },
@@ -101,34 +101,34 @@ export const collections: Collection[] = [
   },
   {
     id: '2',
-    name: 'Abstract',
-    description: 'Abstract paintings are characterized by their lack of representational content, focusing instead on the use of color, shape, and form to create a visual experience.',
+    nameKey: 'collections.abstract',
+    descriptionKey: 'collections.abstractDescription',
     coverImageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/collection_cover.webp`,
     paintings: [
       {
         id: '1',
-        title: 'Starry Night',
+        titleKey: 'paintings.starryNight',
         artist: 'Masi',
         year: 2025,
-        description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
+        descriptionKey: 'paintings.starryNightDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/1.webp`,
         collectionId: '1'
       },
       {
         id: '2',
-        title: 'Starry Night',
+        titleKey: 'paintings.starryNight',
         artist: 'Masi',
         year: 2025,
-        description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
+        descriptionKey: 'paintings.starryNightDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/2.webp`,
         collectionId: '1'
       },
       {
         id: '3',
-        title: 'Starry Night',
+        titleKey: 'paintings.starryNight',
         artist: 'Masi',
         year: 2025,
-        description: 'One of van Gogh\'s most famous works, depicting the view from his asylum room at Saint-Rémy-de-Provence.',
+        descriptionKey: 'paintings.starryNightDescription',
         imageUrl: `${process.env.PUBLIC_URL}/paintings/optimized/abstract/3.webp`,
         collectionId: '1'
       },

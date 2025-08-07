@@ -1,12 +1,18 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useRTL } from '../hooks/useRTL';
 import { photographyCollections, PhotographyImage } from '../data/photographyCollections';
 import LazyImage from './LazyImage';
 
 const PhotoGallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<PhotographyImage | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { t } = useTranslation();
+  const { isRTL } = useLanguage();
+  const { rtlValue } = useRTL();
 
   // Memoize images for better performance
   const allImages = useMemo(() => photographyCollections, []);
@@ -35,15 +41,44 @@ const PhotoGallery: React.FC = () => {
     }
   }, [currentImageIndex, allImages]);
 
+  // RTL-aware navigation handlers
+  const handleRTLPrevious = useCallback(() => {
+    // In RTL, "previous" should go to the next item
+    if (isRTL) {
+      handleNext();
+    } else {
+      handlePrevious();
+    }
+  }, [isRTL, handleNext, handlePrevious]);
+
+  const handleRTLNext = useCallback(() => {
+    // In RTL, "next" should go to the previous item
+    if (isRTL) {
+      handlePrevious();
+    } else {
+      handleNext();
+    }
+  }, [isRTL, handleNext, handlePrevious]);
+
   const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       handleCloseFullscreen();
     } else if (e.key === 'ArrowLeft') {
+      // In RTL, left arrow should go to next item
+      if (isRTL) {
+        handleNext();
+      } else {
       handlePrevious();
+      }
     } else if (e.key === 'ArrowRight') {
+      // In RTL, right arrow should go to previous item
+      if (isRTL) {
+        handlePrevious();
+      } else {
       handleNext();
+      }
     }
-  }, [handleCloseFullscreen, handlePrevious, handleNext]);
+  }, [handleCloseFullscreen, handlePrevious, handleNext, isRTL]);
 
   React.useEffect(() => {
     if (selectedImage) {
@@ -63,10 +98,10 @@ const PhotoGallery: React.FC = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Photography Gallery
+            {t('photos.title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore my collection of photographs captured through the lens
+            {t('photos.description')}
           </p>
         </motion.div>
 
@@ -88,7 +123,7 @@ const PhotoGallery: React.FC = () => {
           >
           <LazyImage
             src={image.imageUrl}
-            alt={image.title}
+            alt={t(image.titleKey)}
             className="w-full h-full group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
@@ -138,7 +173,7 @@ const PhotoGallery: React.FC = () => {
                 >
                   <img
                     src={selectedImage.imageUrl}
-                    alt={selectedImage.title}
+                    alt={t(selectedImage.titleKey)}
                     className="max-w-full max-h-[70vh] object-contain rounded-lg"
                   />
                 </motion.div>
@@ -150,7 +185,8 @@ const PhotoGallery: React.FC = () => {
                   transition={{ delay: 0.4 }}
                   className="flex items-center justify-center space-x-4 mb-4"
                 >
-                  {currentImageIndex > 0 && (
+                  {/* Previous button - Show when not at first image in LTR, or not at last image in RTL */}
+                  {((!isRTL && currentImageIndex > 0) || (isRTL && currentImageIndex < allImages.length - 1)) && (
                     <motion.button
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -158,10 +194,10 @@ const PhotoGallery: React.FC = () => {
                       className="p-3 bg-white bg-opacity-20 rounded-full text-white hover:bg-opacity-30 transition-all duration-200"
                       onClick={(e) => {
                         e.stopPropagation();
-                        handlePrevious();
+                        handleRTLPrevious();
                       }}
                     >
-                      <ChevronLeft size={24} />
+                      {rtlValue(<ChevronLeft size={24} />, <ChevronRight size={24} />)}
                     </motion.button>
                   )}
 
@@ -169,7 +205,8 @@ const PhotoGallery: React.FC = () => {
                     {currentImageIndex + 1} of {allImages.length}
                   </span>
 
-                  {currentImageIndex < allImages.length - 1 && (
+                  {/* Next button - Show when not at last image in LTR, or not at first image in RTL */}
+                  {((!isRTL && currentImageIndex < allImages.length - 1) || (isRTL && currentImageIndex > 0)) && (
                     <motion.button
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -177,10 +214,10 @@ const PhotoGallery: React.FC = () => {
                       className="p-3 bg-white bg-opacity-20 rounded-full text-white hover:bg-opacity-30 transition-all duration-200"
                       onClick={(e) => {
                         e.stopPropagation();
-                        handleNext();
+                        handleRTLNext();
                       }}
                     >
-                      <ChevronRight size={24} />
+                      {rtlValue(<ChevronRight size={24} />, <ChevronLeft size={24} />)}
                     </motion.button>
                   )}
                 </motion.div>
@@ -192,9 +229,9 @@ const PhotoGallery: React.FC = () => {
                   transition={{ delay: 0.6 }}
                   className="bg-black bg-opacity-50 text-white p-4 rounded-lg max-w-md text-center"
                 >
-                  <h3 className="text-lg font-semibold mb-1">{selectedImage.title}</h3>
-                  {selectedImage.description && (
-                    <p className="text-sm opacity-90 mb-1">{selectedImage.description}</p>
+                  <h3 className="text-lg font-semibold mb-1">{t(selectedImage.titleKey)}</h3>
+                  {selectedImage.descriptionKey && (
+                    <p className="text-sm opacity-90 mb-1">{t(selectedImage.descriptionKey)}</p>
                   )}
                   {selectedImage.date && (
                     <p className="text-xs opacity-75">{selectedImage.date}</p>

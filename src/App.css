@@ -185,6 +185,15 @@ body {
   position: relative;
 }
 
+/* RTL support for Swiper */
+[dir="rtl"] .swiper-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .swiper-slide {
+  direction: rtl;
+}
+
 .swiper-slide {
   display: flex;
   align-items: center;

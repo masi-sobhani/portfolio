@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const LoadingSpinner: React.FC = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-7xl mx-auto text-center">
@@ -16,7 +19,7 @@ const LoadingSpinner: React.FC = () => {
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             className="w-12 h-12 border-4 border-gray-200 border-t-gray-900 rounded-full"
           />
-          <p className="text-gray-600 text-lg">Loading...</p>
+          <p className="text-gray-600 text-lg">{t('common.loading')}</p>
         </motion.div>
       </div>
     </div>
