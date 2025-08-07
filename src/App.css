@@ -38,6 +38,67 @@ body {
   text-transform: uppercase;
 }
 
+/* Navigation styles to prevent layout shifts */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  direction: ltr !important;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  direction: ltr !important;
+  flex-direction: row !important;
+}
+
+/* Ensure desktop navigation is hidden on mobile */
+@media (max-width: 767px) {
+  .nav-items {
+    display: none !important;
+  }
+  
+  /* Ensure mobile menu is shown */
+  .mobile-menu-container {
+    display: flex !important;
+  }
+}
+
+.nav-item {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  direction: ltr !important;
+  order: unset !important;
+}
+
+.nav-item:hover {
+  color: #111827;
+}
+
+.nav-item.active {
+  color: #111827;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #111827;
+}
+
 /* Collections grid */
 .collections-container {
   max-width: 1200px;
@@ -98,247 +159,44 @@ body {
 }
 
 .collection-title {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
   margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-  /* Prevent text from inheriting transitions */
-  transition: none;
-  transform: none;
+  line-height: 1.4;
 }
 
 .collection-description {
-  color: #7f8c8d;
-  line-height: 1.5;
-  font-size: 0.9rem;
-  font-weight: 300;
-  /* Prevent text from inheriting transitions */
-  transition: none;
-  transform: none;
-}
-
-/* Back button - Not sticky */
-.back-button {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #2c3e50;
-  transition: all 0.2s ease;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  will-change: transform;
-}
-
-.back-button:hover {
-  background: #f8f9fa;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Collection detail */
-.collection-detail {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  padding-top: 6rem;
-}
-
-.collection-header {
-  text-align: center;
-  margin-bottom: 4rem;
-  color: #2c3e50;
-}
-
-.collection-header h1 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.collection-header p {
-  font-size: 1rem;
-  color: #7f8c8d;
-  max-width: 500px;
-  margin: 0 auto;
+  color: #6b7280;
   line-height: 1.6;
-  font-weight: 300;
+  font-size: 0.875rem;
 }
 
-/* Swiper styles - No background box */
-.swiper-container {
-  width: 100%;
-  height: auto;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-/* RTL support for Swiper */
-[dir="rtl"] .swiper-container {
-  direction: rtl;
-}
-
-[dir="rtl"] .swiper-slide {
-  direction: rtl;
-}
-
-.swiper-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  min-height: 60vh;
-}
-
-.painting-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.painting-image {
-  max-width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-/* Control bar below painting */
-.control-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Photo gallery styles */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
-  padding: 1rem;
-}
-
-/* Navigation and fullscreen buttons */
-.nav-button,
-.fullscreen-button {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  will-change: transform;
-}
-
-.nav-button:hover,
-.fullscreen-button:hover {
-  background: white;
-  transform: scale(1.1);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.nav-button::after {
-  font-size: 24px;
-  color: #2c3e50;
-  font-weight: bold;
-}
-
-/* Painting info panel - Below the swiper */
-.painting-info {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  margin-top: 2rem;
 }
 
-.painting-title {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-}
-
-.painting-artist {
-  font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 1rem;
-  font-weight: 300;
-}
-
-.painting-description {
-  font-size: 1rem;
-  color: #7f8c8d;
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-/* Swiper Pagination - Custom styling */
-.swiper-pagination {
+.photo-item {
   position: relative;
-  bottom: 0;
-  margin-top: 1rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.swiper-pagination-bullet {
-  background: rgba(44, 62, 80, 0.3);
-  opacity: 1;
-  width: 10px;
-  height: 10px;
-  margin: 0 6px;
-  transition: all 0.3s ease;
+.photo-item:hover {
+  transform: scale(1.05);
 }
 
-.swiper-pagination-bullet-active {
-  background: #2c3e50;
-  transform: scale(1.3);
-}
-
-/* Custom Pagination - Outside and Below Slider */
-.custom-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  padding: 1rem 0;
-}
-
-.custom-pagination .swiper-pagination-bullet {
-  background: rgba(0, 0, 0, 0.4);
-  opacity: 1;
-  width: 6px;
-  height: 6px;
-  margin: 0 4px;
-  transition: all 0.3s ease;
-  border-radius: 50%;
-}
-
-.custom-pagination .swiper-pagination-bullet-active {
-  background: #1a1a1a;
-  transform: scale(1.2);
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Fullscreen modal */
@@ -346,19 +204,19 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 1000;
   padding: 2rem;
 }
 
 .fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90vw;
+  max-height: 80vh;
   object-fit: contain;
   border-radius: 8px;
 }
@@ -367,195 +225,246 @@ body {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: #2c3e50;
-  backdrop-filter: blur(10px);
-  transition: all 0.2s ease;
-  will-change: transform;
+  transition: background 0.2s;
 }
 
 .close-fullscreen:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Collection detail styles */
+.collection-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.collection-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.collection-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.collection-header p {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.swiper-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.painting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.painting-image {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.control-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
   background: white;
-  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fullscreen-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-button:hover {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.painting-info {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.painting-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.painting-artist {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.painting-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Custom pagination */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #1f2937;
+}
+
+/* Loading styles */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.125rem;
+  color: #6b7280;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .collections-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-  
-  .collection-card {
-    max-width: 350px;
-  }
-  
-  .collection-detail {
-    padding: 1rem;
-    padding-top: 5rem;
-  }
-  
   .collection-header h1 {
     font-size: 2rem;
   }
   
-  .swiper-slide {
-    padding: 1rem;
-    min-height: 50vh;
-  }
-  
-  .painting-image {
-    max-height: 50vh;
-  }
-  
-  .painting-info {
-    padding: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  .back-button {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  /* Mobile Control Bar */
-  .control-bar {
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.5rem;
-  }
-
-  .nav-button,
-  .fullscreen-button {
-    width: 50px;
-    height: 50px;
-  }
-
-  .nav-button::after {
-    font-size: 18px;
-  }
-
-  /* Mobile Pagination */
-  .swiper-pagination {
-    margin-top: 0.5rem;
-  }
-
-  .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
-  }
-
-  /* Mobile Custom Pagination */
-  .custom-pagination {
-    margin-top: 1rem;
-    padding: 0.5rem 0;
-  }
-
-  .custom-pagination .swiper-pagination-bullet {
-    width: 5px;
-    height: 5px;
-    margin: 0 3px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header h1 {
-    font-size: 1.4rem;
-  }
-  
-  .collection-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .collection-card {
-    max-width: 300px;
-  }
-  
-  .swiper-slide {
-    padding: 0.5rem;
-    min-height: 40vh;
-  }
-  
-  .painting-image {
-    max-height: 40vh;
-  }
-  
-  .painting-title {
-    font-size: 1.4rem;
-  }
-  
-  .painting-artist {
+  .collection-header p {
     font-size: 1rem;
   }
   
-  .painting-description {
-    font-size: 0.9rem;
+  .control-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
-
-  /* Small mobile Control Bar */
+  
   .nav-button,
   .fullscreen-button {
-    width: 45px;
-    height: 45px;
+    padding: 0.5rem;
   }
-
-  .nav-button::after {
-    font-size: 16px;
-  }
-
-  /* Small mobile Pagination */
-  .swiper-pagination-bullet {
-    width: 6px;
-    height: 6px;
-    margin: 0 3px;
-  }
-
-  /* Small mobile Custom Pagination */
-  .custom-pagination .swiper-pagination-bullet {
-    width: 4px;
-    height: 4px;
-    margin: 0 2px;
+  
+  .painting-title {
+    font-size: 1.25rem;
   }
 }
 
-/* Loading animation */
-.loading {
+/* RTL support */
+[dir="rtl"] .nav-item {
+  text-align: center;
+}
+
+[dir="rtl"] .collection-header {
+  text-align: center;
+}
+
+[dir="rtl"] .painting-info {
+  text-align: center;
+}
+
+/* Animation for smooth transitions */
+.nav-item {
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: translateY(-1px);
+}
+
+/* Ensure consistent spacing in navigation */
+.nav-items {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: #2c3e50;
-  font-size: 1.2rem;
-  font-weight: 300;
+  gap: 1rem;
+  flex-shrink: 0;
+  direction: ltr !important;
+  flex-direction: row !important;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Mobile menu button container */
+.mobile-menu-container {
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+@media (max-width: 767px) {
+  .mobile-menu-container {
+    display: flex !important;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
+.nav-item {
+  flex-shrink: 0;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  direction: ltr !important;
+  order: unset !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+/* Override any RTL styles for navbar */
+[dir="rtl"] .nav-container,
+[dir="rtl"] .nav-items,
+[dir="rtl"] .nav-item {
+  direction: ltr !important;
+  flex-direction: row !important;
+  order: unset !important;
 }

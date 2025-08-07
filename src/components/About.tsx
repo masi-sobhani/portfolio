@@ -74,8 +74,8 @@ const About: React.FC = () => {
           <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
             {t('about.whatIDo')}
           </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
+          <div className="grid md:grid-cols-3 gap-6 cursor-pointer">
+            <div className="text-center cursor-pointer" onClick={() => navigate('/collections')}>
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🎨</span>
               </div>
@@ -84,7 +84,7 @@ const About: React.FC = () => {
                 {t('about.paintingDescription')}
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center cursor-pointer">
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🔪</span>
               </div>
@@ -93,7 +93,7 @@ const About: React.FC = () => {
                 {t('about.engravingDescription')}
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center cursor-pointer" onClick={() => navigate('/photos')}>
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📷</span>
               </div>
@@ -102,7 +102,7 @@ const About: React.FC = () => {
                 {t('about.portraitPhotographyDescription')}
               </p>
             </div>
-            <div className="text-center">
+            <div className="text-center cursor-pointer" onClick={() => navigate('/photos')}>
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🏞️</span>
               </div>
