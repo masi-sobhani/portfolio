@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.f35ca823.css",
-    "main.js": "/portfolio/static/js/main.fefa1447.js",
+    "main.js": "/portfolio/static/js/main.ded4c201.js",
     "static/js/734.301b59aa.chunk.js": "/portfolio/static/js/734.301b59aa.chunk.js",
     "static/css/14.70230b84.chunk.css": "/portfolio/static/css/14.70230b84.chunk.css",
     "static/js/14.5770bd9f.chunk.js": "/portfolio/static/js/14.5770bd9f.chunk.js",
-    "static/js/185.f71ee0a8.chunk.js": "/portfolio/static/js/185.f71ee0a8.chunk.js",
+    "static/js/185.2ba87620.chunk.js": "/portfolio/static/js/185.2ba87620.chunk.js",
     "static/js/518.d0b7ac27.chunk.js": "/portfolio/static/js/518.d0b7ac27.chunk.js",
     "static/js/7.b8621501.chunk.js": "/portfolio/static/js/7.b8621501.chunk.js",
     "static/js/453.2effb112.chunk.js": "/portfolio/static/js/453.2effb112.chunk.js",
     "static/js/374.517e98c6.chunk.js": "/portfolio/static/js/374.517e98c6.chunk.js",
     "index.html": "/portfolio/index.html",
     "main.f35ca823.css.map": "/portfolio/static/css/main.f35ca823.css.map",
-    "main.fefa1447.js.map": "/portfolio/static/js/main.fefa1447.js.map",
+    "main.ded4c201.js.map": "/portfolio/static/js/main.ded4c201.js.map",
     "734.301b59aa.chunk.js.map": "/portfolio/static/js/734.301b59aa.chunk.js.map",
     "14.70230b84.chunk.css.map": "/portfolio/static/css/14.70230b84.chunk.css.map",
     "14.5770bd9f.chunk.js.map": "/portfolio/static/js/14.5770bd9f.chunk.js.map",
-    "185.f71ee0a8.chunk.js.map": "/portfolio/static/js/185.f71ee0a8.chunk.js.map",
+    "185.2ba87620.chunk.js.map": "/portfolio/static/js/185.2ba87620.chunk.js.map",
     "518.d0b7ac27.chunk.js.map": "/portfolio/static/js/518.d0b7ac27.chunk.js.map",
     "7.b8621501.chunk.js.map": "/portfolio/static/js/7.b8621501.chunk.js.map",
     "453.2effb112.chunk.js.map": "/portfolio/static/js/453.2effb112.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.f35ca823.css",
-    "static/js/main.fefa1447.js"
+    "static/js/main.ded4c201.js"
   ]
 }
