@@ -202,7 +202,7 @@ const PhotoGallery: React.FC = () => {
                   )}
 
                   <span className="text-white text-sm bg-black bg-opacity-50 px-3 py-1 rounded-full">
-                    {currentImageIndex + 1} of {allImages.length}
+                    {rtlValue(`${currentImageIndex + 1} of ${allImages.length}`,`${currentImageIndex + 1} از ${allImages.length}`)}
                   </span>
 
                   {/* Next button - Show when not at last image in LTR, or not at first image in RTL */}

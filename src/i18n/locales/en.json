@@ -108,6 +108,9 @@
     "photo8": "Photography 8",
     "photo9": "Photography 9",
     "photo10": "Photography 10",
+    "photo11": "Photography 11",
+    "photo12": "Photography 12",
+    "photo13": "Photography 13",
     "photo1Description": "A beautiful moment captured in time",
     "photo2Description": "Exploring light and shadow",
     "photo3Description": "Natural beauty in focus",
@@ -117,6 +120,9 @@
     "photo7Description": "Dynamic movement",
     "photo8Description": "Emotional depth",
     "photo9Description": "Color harmony",
-    "photo10Description": "Final composition"
+    "photo10Description": "Final composition",
+    "photo11Description": "Final composition",
+    "photo12Description": "Final composition",
+    "photo13Description": "Final composition"
   }
-} 
+}

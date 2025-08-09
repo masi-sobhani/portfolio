@@ -108,6 +108,9 @@
     "photo8": "عکاسی ۸",
     "photo9": "عکاسی ۹",
     "photo10": "عکاسی ۱۰",
+    "photo11": "عکاسی ۱۱",
+    "photo12": "عکاسی ۱۲",
+    "photo13": "عکاسی ۱۳",
     "photo1Description": "لحظه‌ای زیبا که در زمان ثبت شده",
     "photo2Description": "کاوش نور و سایه",
     "photo3Description": "زیبایی طبیعی در کانون توجه",
@@ -117,6 +120,9 @@
     "photo7Description": "حرکت پویا",
     "photo8Description": "عمق احساسی",
     "photo9Description": "هارمونی رنگ",
-    "photo10Description": "ترکیب نهایی"
+    "photo10Description": "ترکیب نهایی",
+    "photo11Description": "ترکیب نهایی",
+    "photo12Description": "ترکیب نهایی",
+    "photo13Description": "ترکیب نهایی"
   }
 } 
